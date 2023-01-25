@@ -3,4 +3,4 @@
 using kata_dotnet_core_start.Lib;
 
 Console.WriteLine("Hello, World!");
-TicTacToe.PrintBoard();
+new TicTacToe().PrintBoard();

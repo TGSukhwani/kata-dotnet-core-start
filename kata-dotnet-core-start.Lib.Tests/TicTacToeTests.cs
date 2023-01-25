@@ -10,13 +10,13 @@ public class TicTacToeTests
         //Arrange
         
         //Act
-        var result = TicTacToe.GetInitialBoard();
+        var result = new TicTacToe();
 
         //Assert
         Assert.NotNull(result);
-        Assert.Equal(9,result.Count);
-        Assert.False(result.ContainsValue("X"));
-        Assert.False(result.ContainsValue("O"));
+        Assert.Equal(9,result.Board.Count);
+        Assert.False(result.Board.ContainsValue("X"));
+        Assert.False(result.Board.ContainsValue("O"));
     }
     
     // [Fact] 
