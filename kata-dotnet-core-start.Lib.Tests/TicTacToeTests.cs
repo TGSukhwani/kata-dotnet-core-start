@@ -3,7 +3,7 @@
 public class TicTacToeTests
 {
     [Fact] 
-    public void Get_InitialBoard()
+    public void InitializeBoard()
     {
         //Arrange
         
@@ -18,33 +18,33 @@ public class TicTacToeTests
     }
     
     [Theory]
-    [InlineData(5)]
-    [InlineData(9)]
-    public void Replace_X_When_Move_Then_X_Should_Replaced(int position)
+    [InlineData(5, "X")]
+    [InlineData(9, "O")]
+    public void When_Move_Then_X_Should_Replaced(int position, string player)
     {
         //Arrange
         var game = new TicTacToe();
         
         //Act
-        var result = game.Move(position);
+        var result = game.Move(position, player);
         
         //Assert
         Assert.NotNull(game.Board);
-        Assert.Equal("X", game.Board[position]);
+        Assert.Equal(player, game.Board[position]);
         Assert.Equal("Next Turn", result);
     }
     
     [Theory]
-    [InlineData(5)]
-    [InlineData(9)]
-    public void Position_Already_Taken_When_Move_Then_Return_Error(int position)
+    [InlineData(5, "X")]
+    [InlineData(9, "O")]
+    public void Position_Already_Taken_When_Move_Then_Return_Error(int position, string player)
     {
         //Arrange
         var game = new TicTacToe();
-        game.Move(position);
+        game.Move(position, player);
         
         //Act
-        var result = game.Move(position);
+        var result = game.Move(position, player);
         
         //Assert
         Assert.NotNull(game.Board);

@@ -26,12 +26,12 @@ public class TicTacToe
         Console.WriteLine("     |     |      ");
     }
 
-    public string Move(int position)
+    public string Move(int position, string player)
     {
         if(Board[position] != position.ToString())
             return "a player can take a field if not already taken";
         
-        Board[position] = "X";
+        Board[position] = player;
         return "Next Turn";
     }
 }
