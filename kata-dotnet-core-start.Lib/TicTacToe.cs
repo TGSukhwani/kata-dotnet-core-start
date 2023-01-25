@@ -2,19 +2,19 @@
 
 public class TicTacToe
 {
-    public static Dictionary<int, string> board { get; set; } = new Dictionary<int, string>();
+    private static Dictionary<int, string> Board { get; } = new Dictionary<int, string>();
     
     public static Dictionary<int, string> GetInitialBoard()
     {
         for (var i = 0; i < 9; i++)
         {
-            board.Add(i+1, (i + 1).ToString());
+            Board.Add(i+1, (i + 1).ToString());
         }
         
-        return board;
+        return Board;
     }
     
-    public static void Board()
+    public static void PrintBoard()
     {
         var arr = GetInitialBoard();
         Console.WriteLine("     |     |      ");
