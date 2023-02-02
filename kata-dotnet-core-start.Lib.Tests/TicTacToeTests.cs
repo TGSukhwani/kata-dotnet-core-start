@@ -64,6 +64,7 @@ public class TicTacToeTests
         
         //Assert
         Assert.NotNull(game.Board);
+        Assert.Equal( "X", game.Board[2]);
         Assert.Equal( "O", game.Board[1]);
         Assert.Equal("Next Turn", result);
     }
