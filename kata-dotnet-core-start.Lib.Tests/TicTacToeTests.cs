@@ -51,17 +51,20 @@ public class TicTacToeTests
         Assert.Equal("a player can take a field if not already taken", result);
     }
     
-    // [Fact] 
-    // public void Get_GameOverMessage_When_All_Fields_are_taken()
-    // {
-    //     //Arrange
-    //     
-    //     //Act
-    //     var result = TicTacToe.GetInitialBoard();
-    //
-    //     //Assert
-    //     Assert.NotNull(result);
-    //     Assert.Equal(9,result.Count);
-    //     Assert.Equal(9, result.Count(x => x.Value is "X" or "O"));
-    // }
+    
+    [Fact]
+    public void When_X_Played_Then_Turn_Goes_To_O()
+    {
+        //Arrange
+        var game = new TicTacToe();
+        game.Move(2, "X");
+        
+        //Act
+        var result = game.Move(1, "O");
+        
+        //Assert
+        Assert.NotNull(game.Board);
+        Assert.Equal( "O", game.Board[1]);
+        Assert.Equal("Next Turn", result);
+    }
 }
