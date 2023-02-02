@@ -13,7 +13,8 @@ public class TicTacToe
     private static readonly Dictionary<int, List<int>> rows = new()
     {
         { 1, new List<int>() {1,2,3}},
-        { 2, new List<int>() {4,5,6}}
+        { 2, new List<int>() {4,5,6}},
+        { 3, new List<int>() {7,8,9}}
     };
 
     public Dictionary<int, string> Board { get; } = new Dictionary<int, string>();
@@ -53,7 +54,7 @@ public class TicTacToe
     
     private bool CheckPlayerWins(string player)
     {
-        return PlayerHasRow(player, 1) || PlayerHasRow(player, 2);
+        return PlayerHasRow(player, 1) || PlayerHasRow(player, 2) || PlayerHasRow(player, 3);
     }
 
     private bool PlayerHasRow(string player, int rowNumber)
