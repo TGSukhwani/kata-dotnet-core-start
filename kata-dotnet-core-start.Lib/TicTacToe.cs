@@ -49,7 +49,8 @@ public class TicTacToe
     {
         var rows = new Dictionary<int, List<int>>()
         {
-            { 1, new List<int>() {1,2,3}}
+            { 1, new List<int>() {1,2,3}},
+            { 2, new List<int>() {4,5,6}}
         };
 
         var isWins = true;
@@ -61,16 +62,16 @@ public class TicTacToe
                 break;
             }
         }
-
-        return isWins;
         
-        // foreach (var row in rows)
-        // {
-        //     foreach (var i in row.Value)
-        //     {
-        //         if(Board[i] != player)
-        //             break;
-        //     }
-        // }
+        var isWins2 = true;
+        foreach (var i in rows[2])
+        {
+            if (Board[i] != player)
+            {
+                isWins2 = false;
+                break;
+            }
+        }
+        return isWins || isWins2;
     }
 }
