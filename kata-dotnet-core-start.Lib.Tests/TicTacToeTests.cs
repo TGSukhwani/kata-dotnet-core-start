@@ -20,7 +20,7 @@ public class TicTacToeTests
     [Theory]
     [InlineData(5, "X")]
     [InlineData(9, "O")]
-    public void When_Move_Then_X_Should_Replaced(int position, string player)
+    public void When_X_Moves_Then_X_Takes_The_Field(int position, string player)
     {
         //Arrange
         var game = new TicTacToe();
@@ -35,16 +35,16 @@ public class TicTacToeTests
     }
     
     [Theory]
-    [InlineData(5, "X")]
-    [InlineData(9, "O")]
-    public void Position_Already_Taken_When_Move_Then_Return_Error(int position, string player)
+    [InlineData(5)]
+    [InlineData(9)]
+    public void Position_Already_Taken_When_Move_Then_Return_Error(int position)
     {
         //Arrange
         var game = new TicTacToe();
-        game.Move(position, player);
+        game.Move(position, "X");
         
         //Act
-        var result = game.Move(position, player);
+        var result = game.Move(position, "O");
         
         //Assert
         Assert.NotNull(game.Board);
