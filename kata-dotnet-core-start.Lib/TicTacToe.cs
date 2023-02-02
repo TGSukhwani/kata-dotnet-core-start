@@ -28,10 +28,26 @@ public class TicTacToe
 
     public string Move(int position, string player)
     {
+        if (GameOver(out var gameOver)) return gameOver;
+
         if(Board[position] != position.ToString())
             return "a player can take a field if not already taken";
         
         Board[position] = player;
+        
         return "Next Turn";
+    }
+
+    private bool GameOver(out string gameOver)
+    {
+        var fields = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        gameOver = string.Empty;
+        
+        var isGameOver = Board.Values.Any(x => fields.Contains(Convert.ToInt32(x)));
+
+        if (!isGameOver) return false;
+        
+        gameOver = "Game Over!!";
+        return true;
     }
 }

@@ -68,4 +68,26 @@ public class TicTacToeTests
         Assert.Equal( "O", game.Board[1]);
         Assert.Equal("Next Turn", result);
     }
+    
+    [Fact]
+    public void When_AllFieldsTaken_Then_GameOver()
+    {
+        //Arrange
+        var game = new TicTacToe();
+        game.Move(1, "X");
+        game.Move(2, "O");
+        game.Move(3, "X");
+        game.Move(4, "O");
+        game.Move(5, "X");
+        game.Move(6, "O");
+        game.Move(7, "X");
+        game.Move(8, "O");
+
+        //Act
+        var result = game.Move(9, "X");
+        
+        //Assert
+        Assert.NotNull(game.Board);
+        Assert.Equal("Game Over!!", result);
+    }
 }
