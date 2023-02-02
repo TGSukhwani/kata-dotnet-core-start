@@ -47,14 +47,21 @@ public class TicTacToe
     
     private bool CheckPlayerWins(string player)
     {
+        var isWins = PlayerHasRow(player, 1);
+        var isWins2 = PlayerHasRow(player, 2);
+        return isWins || isWins2;
+    }
+
+    private bool PlayerHasRow(string player, int rowNumber)
+    {
         var rows = new Dictionary<int, List<int>>()
         {
             { 1, new List<int>() {1,2,3}},
             { 2, new List<int>() {4,5,6}}
         };
-
+        
         var isWins = true;
-        foreach (var i in rows[1])
+        foreach (var i in rows[rowNumber])
         {
             if (Board[i] != player)
             {
@@ -62,16 +69,7 @@ public class TicTacToe
                 break;
             }
         }
-        
-        var isWins2 = true;
-        foreach (var i in rows[2])
-        {
-            if (Board[i] != player)
-            {
-                isWins2 = false;
-                break;
-            }
-        }
-        return isWins || isWins2;
+
+        return isWins;
     }
 }
