@@ -59,16 +59,6 @@ public class TicTacToe
 
     private bool PlayerHasRow(string player, int rowNumber)
     {
-        var isWins = true;
-        foreach (var i in rows[rowNumber])
-        {
-            if (Board[i] != player)
-            {
-                isWins = false;
-                break;
-            }
-        }
-
-        return isWins;
+        return rows[rowNumber].All(i => Board[i] == player);
     }
 }
