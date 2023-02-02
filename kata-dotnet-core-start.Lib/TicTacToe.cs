@@ -9,7 +9,13 @@ public class TicTacToe
             Board.Add(i+1, (i + 1).ToString());
         }
     }
-    
+
+    private static readonly Dictionary<int, List<int>> rows = new()
+    {
+        { 1, new List<int>() {1,2,3}},
+        { 2, new List<int>() {4,5,6}}
+    };
+
     public Dictionary<int, string> Board { get; } = new Dictionary<int, string>();
 
     public void PrintBoard()
@@ -47,19 +53,11 @@ public class TicTacToe
     
     private bool CheckPlayerWins(string player)
     {
-        var isWins = PlayerHasRow(player, 1);
-        var isWins2 = PlayerHasRow(player, 2);
-        return isWins || isWins2;
+        return PlayerHasRow(player, 1) || PlayerHasRow(player, 2);
     }
 
     private bool PlayerHasRow(string player, int rowNumber)
     {
-        var rows = new Dictionary<int, List<int>>()
-        {
-            { 1, new List<int>() {1,2,3}},
-            { 2, new List<int>() {4,5,6}}
-        };
-        
         var isWins = true;
         foreach (var i in rows[rowNumber])
         {
