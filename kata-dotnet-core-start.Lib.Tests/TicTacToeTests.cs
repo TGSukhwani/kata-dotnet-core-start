@@ -90,4 +90,22 @@ public class TicTacToeTests
         Assert.NotNull(game.Board);
         Assert.Equal("Game Over!!", result);
     }
+    
+    [Fact]
+    public void When_PlayerTakesRow_Then_PlayerWins()
+    {
+        //Arrange
+        var game = new TicTacToe();
+        game.Move(1, "X");
+        game.Move(4, "O");
+        game.Move(2, "X");
+        game.Move(5, "O");
+
+        //Act
+        var result = game.Move(3, "X");
+        
+        //Assert
+        Assert.NotNull(game.Board);
+        Assert.Equal("Player X Wins!!", result);
+    }
 }

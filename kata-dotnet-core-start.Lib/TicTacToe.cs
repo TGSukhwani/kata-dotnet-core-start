@@ -33,6 +33,9 @@ public class TicTacToe
         
         Board[position] = player;
         
+        if(CheckPlayerWins(player)) 
+            return $"Player {player} Wins!!" ;
+        
         return GameOver() ? "Game Over!!" : "Next Turn";
     }
 
@@ -40,5 +43,34 @@ public class TicTacToe
     {
         var fields = new List<string>() { "X", "O" };
         return Board.Values.All(value => fields.Contains(value));
+    }
+    
+    private bool CheckPlayerWins(string player)
+    {
+        var rows = new Dictionary<int, List<int>>()
+        {
+            { 1, new List<int>() {1,2,3}}
+        };
+
+        var isWins = true;
+        foreach (var i in rows[1])
+        {
+            if (Board[i] != player)
+            {
+                isWins = false;
+                break;
+            }
+        }
+
+        return isWins;
+        
+        // foreach (var row in rows)
+        // {
+        //     foreach (var i in row.Value)
+        //     {
+        //         if(Board[i] != player)
+        //             break;
+        //     }
+        // }
     }
 }
